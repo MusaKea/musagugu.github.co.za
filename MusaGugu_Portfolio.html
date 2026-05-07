@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musa Gugu Msiza — Marketing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0F0E0C;--ink2:#2A2723;--sage:#3D5A47;--sage-light:#E8EDE9;
+  --gold:#B8924A;--gold-pale:#F5ECD9;--cream:#FAF8F4;--white:#FFFFFF;
+  --muted:#6B6560;--border:rgba(184,146,74,0.18);--surface:#F2EFE8;
+}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 56px;display:flex;justify-content:space-between;align-items:center;background:rgba(250,248,244,0.94);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--ink);letter-spacing:0.02em}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:36px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{padding:9px 22px;background:var(--ink);color:var(--cream);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;border-radius:3px;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:var(--sage)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding:120px 56px 80px;gap:80px;align-items:center;position:relative;background:var(--cream)}
+.hero::after{content:'';position:absolute;bottom:0;left:56px;right:56px;height:0.5px;background:var(--border)}
+.hero-kicker{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.hero-kicker::before{content:'';width:28px;height:1px;background:var(--gold)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,5.5vw,72px);font-weight:600;line-height:1.1;margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--sage)}
+.hero-sub{color:var(--muted);font-size:15px;line-height:1.85;margin-bottom:36px;max-width:460px}
+.pill-row{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:44px}
+.pill{padding:6px 15px;border:0.5px solid rgba(61,90,71,0.3);border-radius:100px;font-size:12px;color:var(--sage);background:rgba(61,90,71,0.06);letter-spacing:0.04em}
+.hero-btns{display:flex;gap:14px}
+.btn-dark{padding:13px 30px;background:var(--ink);color:var(--cream);font-family:'Outfit',sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;text-decoration:none;transition:background 0.2s;display:inline-block}
+.btn-dark:hover{background:var(--sage)}
+.btn-outline{padding:13px 30px;background:transparent;color:var(--ink);font-family:'Outfit',sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;border:0.5px solid rgba(15,14,12,0.3);border-radius:3px;cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-block}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-right{display:flex;flex-direction:column;gap:16px}
+.about-card{background:var(--white);border:0.5px solid var(--border);border-radius:14px;padding:36px;box-shadow:0 2px 24px rgba(0,0,0,0.04)}
+.about-card-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.about-card p{font-size:14px;color:var(--ink2);line-height:1.85;margin-bottom:16px}
+.about-card p:last-child{margin-bottom:0}
+.tools-strip{background:var(--white);border:0.5px solid var(--border);border-radius:14px;padding:20px 36px}
+.tools-strip-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.tools-grid{display:flex;flex-wrap:wrap;gap:8px}
+.tool-badge{padding:5px 14px;background:var(--surface);border:0.5px solid var(--border);border-radius:100px;font-size:12px;color:var(--ink2);font-weight:500}
+.tool-badge.ai{background:rgba(61,90,71,0.08);border-color:rgba(61,90,71,0.25);color:var(--sage)}
+
+/* STATS BAR */
+.stats-bar{background:var(--sage);padding:40px 56px;display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+.stat-item{text-align:center;padding:0 16px;border-right:0.5px solid rgba(255,255,255,0.15)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:var(--white);line-height:1}
+.stat-desc{font-size:11px;color:rgba(255,255,255,0.65);margin-top:6px;letter-spacing:0.04em}
+
+/* SECTION */
+.section{padding:100px 56px;max-width:1200px;margin:0 auto}
+.section-kicker{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.section-kicker::before{content:'';width:20px;height:1px;background:var(--gold)}
+.section-h{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3vw,44px);font-weight:600;margin-bottom:14px}
+.section-h em{font-style:italic;color:var(--sage)}
+.section-p{color:var(--muted);max-width:560px;line-height:1.85;margin-bottom:60px;font-size:14px}
+
+/* CASE STUDIES */
+.case-study{background:var(--white);border:0.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:28px}
+.cs-header{display:grid;grid-template-columns:1fr auto;align-items:start;padding:36px 40px 28px;border-bottom:0.5px solid var(--border);gap:32px}
+.cs-tag{display:inline-block;padding:4px 14px;background:var(--gold-pale);color:var(--gold);border-radius:100px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;font-weight:500}
+.cs-tag.featured{background:rgba(61,90,71,0.12);color:var(--sage)}
+.cs-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;margin-bottom:10px}
+.cs-tagline{font-size:14px;color:var(--muted);line-height:1.75;max-width:560px}
+.cs-results-header{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0}
+.result-chip-num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--sage);line-height:1;text-align:right}
+.result-chip-num.gold{color:var(--gold)}
+.result-chip-label{font-size:11px;color:var(--muted);letter-spacing:0.04em;text-align:right}
+.cs-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
+.cs-col{padding:28px 32px;border-right:0.5px solid var(--border)}
+.cs-col:last-child{border-right:none}
+.cs-col-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:500}
+.cs-col p{font-size:13px;color:var(--ink2);line-height:1.8}
+.cs-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.cs-col ul li{font-size:13px;color:var(--ink2);padding-left:16px;position:relative;line-height:1.65}
+.cs-col ul li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--sage)}
+
+/* FLAGSHIP CASE STUDY — PARTNER PROGRAMME */
+.flagship{background:var(--ink);border-radius:20px;overflow:hidden;margin-bottom:28px}
+.flagship-header{padding:48px 48px 36px;border-bottom:0.5px solid rgba(255,255,255,0.08)}
+.flagship-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.flagship-badge{padding:5px 16px;background:rgba(184,146,74,0.2);color:var(--gold);border:0.5px solid rgba(184,146,74,0.4);border-radius:100px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500}
+.flagship-badge.green{background:rgba(61,90,71,0.3);color:#8EC49A;border-color:rgba(61,90,71,0.5)}
+.flagship-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,40px);font-weight:600;color:var(--white);margin-bottom:14px;line-height:1.2}
+.flagship-title em{font-style:italic;color:var(--gold)}
+.flagship-tagline{font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;max-width:680px}
+.flagship-impact{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:0.5px solid rgba(255,255,255,0.08)}
+.impact-stat{padding:32px 40px;border-right:0.5px solid rgba(255,255,255,0.08);text-align:center}
+.impact-stat:last-child{border-right:none}
+.impact-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:600;color:var(--gold);line-height:1;margin-bottom:8px}
+.impact-label{font-size:12px;color:rgba(255,255,255,0.45);letter-spacing:0.06em}
+.flagship-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.flagship-col{padding:36px 40px;border-right:0.5px solid rgba(255,255,255,0.08)}
+.flagship-col:last-child{border-right:none}
+.flagship-col-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:500}
+.flagship-col p{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.85;margin-bottom:12px}
+.flagship-col p:last-child{margin-bottom:0}
+.flagship-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.flagship-col ul li{font-size:13px;color:rgba(255,255,255,0.6);padding-left:18px;position:relative;line-height:1.7}
+.flagship-col ul li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+
+/* PROGRAMME TIERS */
+.tiers-strip{background:rgba(255,255,255,0.04);border-top:0.5px solid rgba(255,255,255,0.08);padding:32px 40px}
+.tiers-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:500}
+.tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tier-card{padding:20px 24px;border-radius:10px;border:0.5px solid rgba(255,255,255,0.08)}
+.tier-card.bronze{border-color:rgba(205,127,50,0.3);background:rgba(205,127,50,0.06)}
+.tier-card.silver{border-color:rgba(192,192,192,0.3);background:rgba(192,192,192,0.06)}
+.tier-card.gold{border-color:rgba(184,146,74,0.4);background:rgba(184,146,74,0.08)}
+.tier-name{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
+.tier-name.bronze{color:#CD7F32}
+.tier-name.silver{color:#C0C0C0}
+.tier-name.gold-c{color:var(--gold)}
+.tier-margin{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--white);margin-bottom:6px}
+.tier-desc{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6}
+
+/* DELIVERABLES */
+.deliverables-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:0.5px solid rgba(255,255,255,0.08)}
+.deliv-item{padding:24px 28px;border-right:0.5px solid rgba(255,255,255,0.08);text-align:center}
+.deliv-item:last-child{border-right:none}
+.deliv-icon{font-size:24px;margin-bottom:10px}
+.deliv-name{font-size:13px;font-weight:500;color:var(--white);margin-bottom:4px}
+.deliv-desc{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6}
+
+/* AUTOMATION FLOW */
+.flow-section{background:var(--surface);padding:100px 56px;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border)}
+.flow-inner{max-width:1200px;margin:0 auto}
+.flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:48px;background:var(--white);border:0.5px solid var(--border);border-radius:16px;overflow:hidden}
+.flow-step{padding:32px 20px;border-right:0.5px solid var(--border);position:relative;text-align:center}
+.flow-step:last-child{border-right:none}
+.flow-step::after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--gold);z-index:2;background:var(--white);padding:4px 2px}
+.flow-step:last-child::after{display:none}
+.flow-icon{width:48px;height:48px;background:var(--sage-light);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 16px}
+.flow-step-num{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:500}
+.flow-step-name{font-weight:500;font-size:13px;color:var(--ink);margin-bottom:6px}
+.flow-step-desc{font-size:12px;color:var(--muted);line-height:1.65}
+.flow-outcomes{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+.outcome-card{background:var(--white);border:0.5px solid var(--border);border-radius:10px;padding:20px}
+.outcome-card p{font-size:13px;color:var(--ink2);line-height:1.7;padding-left:14px;border-left:2px solid var(--sage)}
+
+/* SKILLS */
+.skills-section{padding:100px 56px;max-width:1200px;margin:0 auto}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.skills-card{background:var(--white);border:0.5px solid var(--border);border-radius:14px;padding:32px}
+.skills-card-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:500}
+.cert-list{display:flex;flex-direction:column;gap:14px}
+.cert-item{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--surface);border-radius:10px}
+.cert-icon{width:36px;height:36px;background:var(--sage-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.cert-name{font-size:13px;font-weight:500;color:var(--ink)}
+.cert-issuer{font-size:11px;color:var(--muted)}
+.tool-section-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tool-card{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:10px}
+.tool-dot{width:8px;height:8px;border-radius:50%;background:var(--sage);flex-shrink:0}
+.tool-card-name{font-size:13px;font-weight:500;color:var(--ink2)}
+.ai-banner{margin-top:28px;background:linear-gradient(135deg,var(--sage) 0%,#2A4033 100%);border-radius:14px;padding:28px 32px;display:flex;align-items:flex-start;gap:24px}
+.ai-banner-icon{font-size:32px;flex-shrink:0;margin-top:4px}
+.ai-banner-text h4{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--white);margin-bottom:6px}
+.ai-banner-text p{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.75}
+.ai-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ai-chip{padding:4px 12px;background:rgba(255,255,255,0.12);border:0.5px solid rgba(255,255,255,0.2);border-radius:100px;font-size:11px;color:rgba(255,255,255,0.85)}
+
+/* EVENTS */
+.events-section{background:var(--ink);padding:100px 56px}
+.events-inner{max-width:1200px;margin:0 auto}
+.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.event-card{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.1);border-radius:14px;padding:32px;transition:border-color 0.2s}
+.event-card:hover{border-color:var(--gold)}
+.event-type{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.event-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--white);margin-bottom:12px}
+.event-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.75}
+
+/* CONTACT */
+.contact-wrap{background:var(--cream);padding:100px 56px}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-card{background:var(--white);border:0.5px solid var(--border);border-radius:16px;padding:40px}
+.contact-card h3{font-family:'Cormorant Garamond',serif;font-size:28px;margin-bottom:14px}
+.contact-card p{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:20px}
+.contact-link-list{display:flex;flex-direction:column;gap:12px}
+.c-link{display:flex;align-items:center;gap:14px;padding:14px 18px;border:0.5px solid var(--border);border-radius:10px;text-decoration:none;color:var(--ink);font-size:13px;transition:border-color 0.2s;background:var(--surface)}
+.c-link:hover{border-color:var(--gold);color:var(--gold)}
+.c-link-ico{width:34px;height:34px;background:var(--sage-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:600;color:var(--sage);font-size:12px}
+.open-card{background:var(--sage);border-radius:16px;padding:40px}
+.open-card h3{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--white);margin-bottom:16px}
+.open-card p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.85;margin-bottom:28px}
+.role-list{display:flex;flex-direction:column;gap:12px}
+.role-item{padding:16px 20px;background:rgba(255,255,255,0.1);border-radius:10px;border-left:3px solid var(--gold)}
+.role-title{font-size:14px;color:var(--white);font-weight:500;margin-bottom:4px}
+.role-sub{font-size:12px;color:rgba(255,255,255,0.55)}
+footer{background:var(--ink);padding:28px 56px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.4)}
+footer span:last-child{color:var(--gold)}
+
+@media(max-width:900px){
+  nav{padding:16px 20px}.nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:100px 20px 60px;gap:40px;min-height:auto}
+  .stats-bar{grid-template-columns:1fr 1fr;gap:0;padding:32px 20px}
+  .stat-item{border-right:none;border-bottom:0.5px solid rgba(255,255,255,0.1);padding:16px}
+  .section{padding:60px 20px}
+  .cs-header{grid-template-columns:1fr}.cs-body{grid-template-columns:1fr}
+  .cs-col{border-right:none;border-bottom:0.5px solid var(--border)}.cs-col:last-child{border-bottom:none}
+  .flagship-impact{grid-template-columns:1fr}.impact-stat{border-right:none;border-bottom:0.5px solid rgba(255,255,255,0.08)}
+  .flagship-body{grid-template-columns:1fr}.flagship-col{border-right:none;border-bottom:0.5px solid rgba(255,255,255,0.08)}
+  .tiers-grid{grid-template-columns:1fr}.deliverables-row{grid-template-columns:1fr 1fr}
+  .flow-section{padding:60px 20px}.flow-steps{grid-template-columns:1fr}.flow-step::after{display:none}
+  .flow-outcomes{grid-template-columns:1fr 1fr}
+  .skills-section{padding:60px 20px}.skills-grid{grid-template-columns:1fr}
+  .tool-section-grid{grid-template-columns:1fr 1fr}.ai-banner{flex-direction:column}
+  .events-section{padding:60px 20px}.events-grid{grid-template-columns:1fr}
+  .contact-wrap{padding:60px 20px}.contact-inner{grid-template-columns:1fr;gap:24px}
+  footer{padding:24px 20px;flex-direction:column;gap:8px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Musa Gugu <span>Msiza</span></div>
+  <div class="nav-links">
+    <a href="#work">Case Studies</a>
+    <a href="#automation">Automation</a>
+    <a href="#skills">Skills</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Hire me</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-kicker">Marketing Technologist</div>
+    <h1>Strategy, systems, <em>and stories</em> that scale.</h1>
+    <p class="hero-sub">I'm Musa Gugu Msiza — a marketing technologist working at the intersection of communications and technology. I identify gaps, build solutions, and deliver programmes that generate real commercial impact.</p>
+    <div class="pill-row">
+      <span class="pill">Email Marketing</span>
+      <span class="pill">Social Media</span>
+      <span class="pill">Programme Design</span>
+      <span class="pill">Marketing Automation</span>
+      <span class="pill">Event Management</span>
+      <span class="pill">CRM &amp; HubSpot</span>
+      <span class="pill">AI-Assisted Marketing</span>
+      <span class="pill">Partner Programmes</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#work" class="btn-dark">View case studies</a>
+      <a href="#contact" class="btn-outline">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="about-card">
+      <div class="about-card-label">About me</div>
+      <p>I don't just execute campaigns — I see structural problems and build the systems to fix them. From formalising an undocumented partner network into a structured programme that unlocked R100M in revenue, to designing automation workflows and building internal portals, I work at the intersection of strategy and execution.</p>
+      <p>My experience spans email marketing, automation workflows, partner programme design, social media management, intranet development, and high-impact event planning — with hands-on experience in HubSpot, Airtable, Constant Contact, ClickUp, and more.</p>
+    </div>
+    <div class="tools-strip">
+      <div class="tools-strip-label">Tools I work with</div>
+      <div class="tools-grid">
+        <span class="tool-badge">HubSpot</span>
+        <span class="tool-badge">Airtable</span>
+        <span class="tool-badge">Constant Contact</span>
+        <span class="tool-badge">ClickUp</span>
+        <span class="tool-badge">Mailchimp</span>
+        <span class="tool-badge">Canva</span>
+        <span class="tool-badge">Google Analytics</span>
+        <span class="tool-badge">Excel</span>
+        <span class="tool-badge ai">Claude AI</span>
+        <span class="tool-badge ai">ChatGPT</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">R100M</div><div class="stat-desc">Revenue unlocked by partner programme</div></div>
+  <div class="stat-item"><div class="stat-num">200+</div><div class="stat-desc">Leads generated via email campaign</div></div>
+  <div class="stat-item"><div class="stat-num">5%</div><div class="stat-desc">Landing page conversion rate</div></div>
+  <div class="stat-item"><div class="stat-num">30%</div><div class="stat-desc">Social media engagement boost</div></div>
+  <div class="stat-item"><div class="stat-num">25%</div><div class="stat-desc">Website traffic increase</div></div>
+</div>
+
+<!-- CASE STUDIES -->
+<div id="work">
+<div class="section">
+  <div class="section-kicker">Case studies</div>
+  <h2 class="section-h">Work that <em>delivered</em></h2>
+  <p class="section-p">From identifying gaps no one else was addressing to building the systems that fixed them — each project below shows my approach from problem through to measurable result.</p>
+
+  <!-- FLAGSHIP: PARTNER PROGRAMME -->
+  <div class="flagship">
+    <div class="flagship-header">
+      <div class="flagship-eyebrow">
+        <span class="flagship-badge">🏆 Flagship Project</span>
+        <span class="flagship-badge green">Programme Design &amp; Systems Build</span>
+      </div>
+      <div class="flagship-title">Boxfusion Reseller Partner Programme — <em>Built from the ground up</em></div>
+      <div class="flagship-tagline">Boxfusion had existing partners — but they were undocumented, untracked, and operating without any formal structure. I identified this gap, designed the entire programme from scratch, built the supporting systems and portal, and formalised a structure that expanded our market footprint and generated R100 million in revenue.</div>
+    </div>
+    <div class="flagship-impact">
+      <div class="impact-stat">
+        <div class="impact-num">R100M</div>
+        <div class="impact-label">Revenue generated through the formalised programme</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-num">3</div>
+        <div class="impact-label">Structured partner tiers (Bronze, Silver, Gold) created</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-num">0→1</div>
+        <div class="impact-label">Entire programme built from nothing — no prior formal structure</div>
+      </div>
+    </div>
+    <div class="flagship-body">
+      <div class="flagship-col">
+        <div class="flagship-col-label">The problem I identified</div>
+        <p>Boxfusion had partners — but they existed informally, without documentation, structure, or a system to manage them. There was no way to track partner activity, no formal agreements, no onboarding process, and no commercial framework to govern how revenue would be shared.</p>
+        <p>More critically, the business needed to expand its market footprint and reach new customers it couldn't serve directly. Partners were the answer — but only if they were properly structured, enabled, and managed.</p>
+        <p>I saw this gap and took ownership of solving it.</p>
+      </div>
+      <div class="flagship-col">
+        <div class="flagship-col-label">What I built</div>
+        <ul>
+          <li>Designed and documented the full Boxfusion Reseller Partner Programme from scratch</li>
+          <li>Created a three-tier partner structure (Bronze, Silver, Gold) with clear criteria, margin structures ranging from 10% to 35%+, and distinct benefits per tier</li>
+          <li>Built the onboarding process — application, assessment, welcome pack, contract finalisation, and 90-day engagement planning</li>
+          <li>Developed the partner portal to support programme management, tracking, and communication</li>
+          <li>Designed ongoing partner enablement through training access, demand generation support, and Partner Success Manager assignment</li>
+          <li>Briefed and structured the company intranet to centralise the systems and resources that support the programme internally</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tiers-strip">
+      <div class="tiers-label">Partner tier structure I designed</div>
+      <div class="tiers-grid">
+        <div class="tier-card bronze">
+          <div class="tier-name bronze">🥉 Bronze</div>
+          <div class="tier-margin">Up to 10% margin</div>
+          <div class="tier-desc">Entry level — registered IT companies with 2+ years experience. Access to Boxfusion collateral and basic sales &amp; marketing support.</div>
+        </div>
+        <div class="tier-card silver">
+          <div class="tier-name silver">🥈 Silver</div>
+          <div class="tier-margin">10%–20% margin</div>
+          <div class="tier-desc">Implementation &amp; Sales partners with enterprise software experience, dedicated teams, and proven ability to deliver or sell Boxfusion solutions.</div>
+        </div>
+        <div class="tier-card gold">
+          <div class="tier-name gold-c">🥇 Gold</div>
+          <div class="tier-margin">20%–35%+ margin</div>
+          <div class="tier-desc">Senior partners with 5+ years experience, 4+ certified resources, and a track record of multi-million-rand deals. Priority access to opportunities and joint GTM support.</div>
+        </div>
+      </div>
+    </div>
+    <div class="deliverables-row">
+      <div class="deliv-item">
+        <div class="deliv-icon">📄</div>
+        <div class="deliv-name">Programme Document</div>
+        <div class="deliv-desc">Full written framework including objectives, tier criteria, benefits, and commercial terms</div>
+      </div>
+      <div class="deliv-item">
+        <div class="deliv-icon">🖥️</div>
+        <div class="deliv-name">Partner Portal</div>
+        <div class="deliv-desc">A live, working portal built to support partner onboarding, tracking, and management</div>
+      </div>
+      <div class="deliv-item">
+        <div class="deliv-icon">🏢</div>
+        <div class="deliv-name">Company Intranet Brief</div>
+        <div class="deliv-desc">Structured briefing document for internal digital workspace to centralise company knowledge and workflows</div>
+      </div>
+      <div class="deliv-item">
+        <div class="deliv-icon">📋</div>
+        <div class="deliv-name">Onboarding Process</div>
+        <div class="deliv-desc">5-step partner onboarding journey from application through to 90-day pipeline planning</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMAIL -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div>
+        <div class="cs-tag">Email Marketing</div>
+        <div class="cs-title">Botsa Chatbot Product Launch Campaign</div>
+        <div class="cs-tagline">Introduced Botsa — an intelligent chatbot — through a targeted email campaign promoting a 30-day free trial, driving both awareness and direct lead generation.</div>
+      </div>
+      <div class="cs-results-header">
+        <div><div class="result-chip-num">200+</div><div class="result-chip-label">Leads generated</div></div>
+        <div><div class="result-chip-num">5%</div><div class="result-chip-label">Conversion rate</div></div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-col">
+        <div class="cs-col-label">Objective</div>
+        <p>Introduce Botsa to the market, communicate its value in making policies and information accessible within everyday work tools, and drive sign-ups for a free trial.</p>
+      </div>
+      <div class="cs-col">
+        <div class="cs-col-label">Approach</div>
+        <p>Built the campaign around a clear value proposition. Developed concise, scannable copy highlighting key benefits and use cases, structured to guide readers naturally toward a strong call-to-action with minimal friction.</p>
+      </div>
+      <div class="cs-col">
+        <div class="cs-col-label">Results</div>
+        <ul>
+          <li>Successfully generated 200+ qualified leads</li>
+          <li>Landing page achieved a 5% conversion rate on the free trial offer</li>
+          <li>Clear CTA structure drove immediate action from cold audience</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div>
+        <div class="cs-tag">Content &amp; Social Media</div>
+        <div class="cs-title">Multi-Channel Content &amp; Brand Authority Programme</div>
+        <div class="cs-tagline">Created and managed a full content ecosystem across website, social media, and campaigns — including thought leadership, blogs, and posts — to drive brand awareness and audience education.</div>
+      </div>
+      <div class="cs-results-header">
+        <div><div class="result-chip-num">30%</div><div class="result-chip-label">Engagement boost</div></div>
+        <div><div class="result-chip-num">25%</div><div class="result-chip-label">Website traffic increase</div></div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-col">
+        <div class="cs-col-label">Objective</div>
+        <p>Build brand authority, drive consistent website traffic, and grow social media engagement through a structured content strategy aligned to audience insights and marketing goals.</p>
+      </div>
+      <div class="cs-col">
+        <div class="cs-col-label">Approach</div>
+        <ul>
+          <li>Planned and executed a content strategy including blogs, articles, and thought leadership pieces</li>
+          <li>Ensured a consistent brand voice and messaging across all digital touchpoints</li>
+          <li>Managed content calendars across multiple platforms simultaneously</li>
+        </ul>
+      </div>
+      <div class="cs-col">
+        <div class="cs-col-label">Results</div>
+        <ul>
+          <li>Strengthened brand authority in the market</li>
+          <li>Increased website traffic by 25%</li>
+          <li>Boosted social media engagement by 30%</li>
+          <li>Maintained consistent messaging across all channels</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- AUTOMATION -->
+<div id="automation" class="flow-section">
+  <div class="flow-inner">
+    <div class="section-kicker">Marketing Automation</div>
+    <h2 class="section-h">Airtable <em>Request Automation</em> System</h2>
+    <p class="section-p">Replaced informal, manual marketing request methods with a structured, trackable, and fully automated Airtable system — centralising all requests and eliminating manual follow-up overhead.</p>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-icon">📋</div>
+        <div class="flow-step-num">Step 1</div>
+        <div class="flow-step-name">Airtable form submission</div>
+        <div class="flow-step-desc">Requestor completes structured form capturing all required info upfront</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">🗄️</div>
+        <div class="flow-step-num">Step 2</div>
+        <div class="flow-step-name">Data stored in base</div>
+        <div class="flow-step-desc">Submission auto-populates a centralised Airtable base for tracking</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">🏷️</div>
+        <div class="flow-step-num">Step 3</div>
+        <div class="flow-step-name">Status assigned</div>
+        <div class="flow-step-desc">Request is categorised and prioritised within the workflow view</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">✉️</div>
+        <div class="flow-step-num">Step 4</div>
+        <div class="flow-step-name">Confirmation email</div>
+        <div class="flow-step-desc">Automated confirmation sent to requestor with reference details</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">🔔</div>
+        <div class="flow-step-num">Step 5</div>
+        <div class="flow-step-name">Internal notification</div>
+        <div class="flow-step-desc">Team is alerted automatically — no manual handoff required</div>
+      </div>
+    </div>
+    <div class="flow-outcomes">
+      <div class="outcome-card"><p>Centralised all marketing and automation requests in a single, visible system</p></div>
+      <div class="outcome-card"><p>Improved request clarity through structured form fields — no more missing information</p></div>
+      <div class="outcome-card"><p>Enhanced tracking, prioritisation, and workflow visibility across the team</p></div>
+      <div class="outcome-card"><p>Eliminated manual follow-ups and email-based requests entirely</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="skills">
+<div class="skills-section">
+  <div class="section-kicker">Credentials</div>
+  <h2 class="section-h">Skills &amp; <em>certifications</em></h2>
+  <p class="section-p" style="margin-bottom:44px">Formal qualifications backed by hands-on tool experience across the full marketing technology stack — including AI tools I use daily.</p>
+  <div class="skills-grid">
+    <div class="skills-card">
+      <div class="skills-card-label">Certifications &amp; qualifications</div>
+      <div class="cert-list">
+        <div class="cert-item">
+          <div class="cert-icon">🎓</div>
+          <div><div class="cert-name">BCom, Marketing Management</div><div class="cert-issuer">University degree</div></div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">📊</div>
+          <div><div class="cert-name">UCT Marketing Analyst</div><div class="cert-issuer">University of Cape Town</div></div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🏆</div>
+          <div><div class="cert-name">HubSpot Digital Marketing</div><div class="cert-issuer">HubSpot Academy</div></div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">📈</div>
+          <div><div class="cert-name">Google Analytics for Beginners</div><div class="cert-issuer">Google</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="skills-card">
+      <div class="skills-card-label">Tools &amp; platforms</div>
+      <div class="tool-section-grid">
+        <div class="tool-card"><div class="tool-dot"></div><div class="tool-card-name">HubSpot</div></div>
+        <div class="tool-card"><div class="tool-dot"></div><div class="tool-card-name">Airtable</div></div>
+        <div class="tool-card"><div class="tool-dot"></div><div class="tool-card-name">Constant Contact</div></div>
+        <div class="tool-card"><div class="tool-dot"></div><div class="tool-card-name">ClickUp</div></div>
+        <div class="tool-card"><div class="tool-dot"></div><div class="tool-card-name">Mailchimp</div></div>
+        <div class="tool-card"><div class="tool-dot"></div><div class="tool-card-name">Canva</div></div>
+        <div class="tool-card"><div class="tool-dot"></div><div class="tool-card-name">Google Analytics</div></div>
+        <div class="tool-card"><div class="tool-dot"></div><div class="tool-card-name">Microsoft Excel</div></div>
+        <div class="tool-card"><div class="tool-dot"></div><div class="tool-card-name">SQL (in progress)</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="ai-banner">
+    <div class="ai-banner-text">
+      <h4>AI-powered marketing — a skill I use daily</h4>
+      <p>I actively use AI tools to accelerate content creation, build smarter workflows, develop campaign copy, and solve marketing problems faster. This isn't a trend I'm following — it's embedded in how I work.</p>
+      <div class="ai-chips">
+        <span class="ai-chip">Claude (Anthropic)</span>
+        <span class="ai-chip">ChatGPT</span>
+        <span class="ai-chip">AI-assisted copywriting</span>
+        <span class="ai-chip">Prompt engineering</span>
+        <span class="ai-chip">Workflow automation with AI</span>
+        <span class="ai-chip">AI for content strategy</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- EVENTS -->
+<div id="events" class="events-section">
+  <div class="events-inner">
+    <div class="section-kicker" style="color:var(--gold)">Event Management</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3vw,44px);font-weight:600;margin-bottom:14px;color:var(--white)">Planning &amp; <em style="font-style:italic;color:var(--gold)">delivering</em> events</h2>
+    <p class="section-p" style="color:rgba(255,255,255,0.5)">End-to-end event planning, coordination, and execution across different formats — from intimate in-person gatherings to exhibitions and CSI programmes.</p>
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-type">Format — In-person</div>
+        <div class="event-name">In-Person Corporate Events</div>
+        <div class="event-desc">Planning and executing in-person marketing and corporate events — managing logistics, communications, stakeholder coordination, and on-the-day delivery.</div>
+      </div>
+      <div class="event-card">
+        <div class="event-type">Format — Community</div>
+        <div class="event-name">CSI Events</div>
+        <div class="event-desc">Supporting Corporate Social Investment events — coordinating communications, managing content capture, and ensuring brand presence and message consistency throughout.</div>
+      </div>
+      <div class="event-card">
+        <div class="event-type">Format — Industry</div>
+        <div class="event-name">Exhibitions</div>
+        <div class="event-desc">Participating in and supporting industry exhibition planning — from pre-event marketing and materials to on-the-ground brand representation and post-event follow-up.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="contact-wrap">
+  <div class="contact-inner">
+    <div class="contact-card">
+      <h3>Let's work together</h3>
+      <p>I'm currently exploring new opportunities — particularly where marketing strategy, programme design, automation, and data intersect. If you're looking for someone who doesn't just execute but builds, I'd love to connect.</p>
+      <p style="font-size:13px;color:var(--muted)">Based in Johannesburg, South Africa. Open to full-time roles, freelance, and consulting engagements. Hybrid or remote considered.</p>
+      <div class="contact-link-list">
+        <a href="https://musaport.my.canva.site/portfolio" class="c-link" target="_blank">
+          <div class="c-link-ico">🌐</div>musaport.my.canva.site/portfolio
+        </a>
+        <a href="mailto:gugumsiza7@gmail.com" class="c-link">
+          <div class="c-link-ico">✉️</div>gugumsiza7@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/musa-gugu-4b715019a/" class="c-link" target="_blank">
+          <div class="c-link-ico">in</div>linkedin.com/in/musa-gugu-4b715019a
+        </a>
+      </div>
+    </div>
+    <div class="open-card">
+      <h3>Open to these roles</h3>
+      <p>Four lanes where my skills and ambition converge — pick one or all as a starting point for a conversation.</p>
+      <div class="role-list">
+        <div class="role-item">
+          <div class="role-title">Marketing Automation Specialist</div>
+          <div class="role-sub">Workflow design · CRM · Campaign ops · HubSpot</div>
+        </div>
+        <div class="role-item">
+          <div class="role-title">Marketing &amp; Communications Manager</div>
+          <div class="role-sub">Strategy · Content · Brand · Stakeholder comms</div>
+        </div>
+        <div class="role-item">
+          <div class="role-title">Marketing Technologist</div>
+          <div class="role-sub">MarTech stack · Systems design · Analytics · Reporting</div>
+        </div>
+        <div class="role-item">
+          <div class="role-title">Junior Data Analyst</div>
+          <div class="role-sub">Excel · SQL · Power BI — growing capability</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2025 Musa Gugu Msiza — Johannesburg, South Africa</span>
+  <span>Email · Social · Automation · Partner Programmes · Events · Data</span>
+</footer>
+
+</body>
+</html>
